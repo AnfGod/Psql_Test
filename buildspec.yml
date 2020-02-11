@@ -1,10 +1,20 @@
+# buildspec.yml
 version: 0.2
 
 phases:
-    install:
-      commands:
-        - gem install bundler
-        - bundler install
-    pre_build:
-      commands:
-        - DATABASE_URL=$DATABASE_URL RAILS_ENV=$RAILS_ENV bundle exec rake db:migrate
+  install:
+       install:
+        runtime-versions:
+         ruby: 2.6
+  build:
+    commands:
+      - echo Build started on `date`
+  post_build:
+    commands:
+      - echo Build completed on `date`
+post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/psql_test.jar
