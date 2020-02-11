@@ -3,7 +3,8 @@ version: 0.2
 
 phases:
   install:
-      runtime-versions: ruby: 2.6.5
+      runtime-versions: 
+      ruby: ruby2.5
   build:
     commands:
       - echo Build started on `date`
