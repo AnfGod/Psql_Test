@@ -6,7 +6,6 @@ phases:
     commands:
       - echo Logging into Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=154477107666.dkr.ecr.us-east-1.amazonaws.com/dailydrip/produciton
   build:
     commands:
       - echo Build started on `date`
@@ -15,10 +14,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - echo Writing image definitions file...
-      - printf '[{"name":"produciton","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
-
+post_build:
+    commands:
+      - echo Build completed on `date`
 artifacts:
-  files: imagedefinitions.json
+  files:
+    - target/psql_test.zip
