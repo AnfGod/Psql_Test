@@ -3,9 +3,8 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - echo Logging into Amazon ECR...
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      runtime-versions:
+      ruby: 2.6.5
   build:
     commands:
       - echo Build started on `date`
