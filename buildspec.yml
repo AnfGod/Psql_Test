@@ -17,4 +17,4 @@ post_build:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/psql_test.zip
+    - target/psql_test.jar
